@@ -106,8 +106,8 @@ export default function Home() {
 
                 <div className='py-5 my-3'>
                     <h1 className='mb-5 text-primary text-center font-semibold text-3xl'>Why Choose ShopMate?</h1>
-                    <div className='mx-16 gap-3  md:mx-24  flex flex-wrap '>
-                        <div className='border rounded w-64 p-3 bg-white box'>
+                    <div className='mx-16 justify-center gap-3  md:mx-24  flex flex-wrap '>
+                        <div className='border rounded w-64 p-3 box bg-white box'>
                             <div className='flex justify-center'>
                                 <img src={premium} alt="" className='w-24' />
                             </div>
