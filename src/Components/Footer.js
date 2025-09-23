@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Footer = () => {
+
     return (
         <footer className="bg-background text-textPrimary py-8 px-6">
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -44,7 +45,7 @@ const Footer = () => {
                         <a href="/shop" className="hover:text-accent transition">Shop</a>
                         <a href="/about" className="hover:text-accent transition">About Us</a>
                         <a href="/contact" className="hover:text-accent transition">Contact</a>
-                        <a href="/terms" className="hover:text-accent transition">Terms & Conditions</a>
+                        <a href='/terms' className="hover:text-accent transition">Terms & Conditions</a>
                         <a href="/returns" className="hover:text-accent transition">Return Policy</a>
                     </nav>
                 </div>
