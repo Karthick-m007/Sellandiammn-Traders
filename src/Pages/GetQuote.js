@@ -128,7 +128,7 @@ export default function GetQuote() {
 
         if (name === 'image') {
             setGetQuot({
-                ...GetQuote,
+                ...getquot,
                 [name]:files[0]
             })
             return
