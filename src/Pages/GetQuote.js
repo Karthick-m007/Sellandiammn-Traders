@@ -32,23 +32,6 @@ export default function GetQuote() {
         e.preventDefault();
 
 
-        const formdata = new FormData()
-        formdata.append("name",getquot.name)
-        formdata.append("email",getquot.email)
-        formdata.append("mobilenumber",getquot.mobilenumber)
-        formdata.append("image",getquot.image)
-        formdata.append("message",getquot.message)
-
-
-        fetch(`${url}quote`,{
-            method:"POST",
-            credentials:'include',
-            body:formdata
-        })
-
-        .then(res=>res.json())
-        .then(data=>console.log(data))
-        .catch(err=>console.log("error in frontend quot",err))
 
 
 
@@ -115,6 +98,30 @@ export default function GetQuote() {
         //         console.log('FAILED...', error.text);
         //         alert("Something went wrong!");
         //     });
+
+
+
+
+        const formdata = new FormData()
+        formdata.append("name", getquot.name)
+        formdata.append("email", getquot.email)
+        formdata.append("mobilenumber", getquot.mobilenumber)
+        formdata.append("image", getquot.image)
+        formdata.append("message", getquot.message)
+
+
+        fetch(`${url}quote`, {
+            method: "POST",
+            credentials: 'include',
+            body: formdata
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                alert(data.message)
+            })
+            .catch(err => console.log("error in frontend quot", err))
     }
 
     function handlechange(e) {
