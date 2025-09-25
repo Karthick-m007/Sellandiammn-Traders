@@ -10,7 +10,7 @@ export default function GetQuote() {
     const [getquot, setGetQuot] = useState({
         name: "",
         email: "",
-        image:"",
+        image: "",
         mobilenumber: "",
         message: ""
     });
@@ -26,15 +26,39 @@ export default function GetQuote() {
     const fullnamereg = /^[A-Za-z\s]*$/;
     const emailreg = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     const mobile = /^[0-9]{10}$/;
-
+    const url = process.env.REACT_APP_URL
+    console.log(url)
     function handlesubmit(e) {
         e.preventDefault();
+
+
+        const formdata = new FormData()
+        formdata.append("name",getquot.name)
+        formdata.append("email",getquot.email)
+        formdata.append("mobilenumber",getquot.mobilenumber)
+        formdata.append("image",getquot.image)
+        formdata.append("message",getquot.message)
+
+
+        fetch(`${url}quote`,{
+            method:"POST",
+            credentials:'include',
+            body:formdata
+        })
+
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+        .catch(err=>console.log("error in frontend quot",err))
+
+
+
+
 
         let errors = {};
         let isvalid = true;
 
         // Name validation
-        if (getquot.name.trim() === "") {
+        if (!getquot.name ||getquot.name.trim() === "") {
             errors.name = "Enter your name";
             isvalid = false;
         } else if (!fullnamereg.test(getquot.name.trim())) {
@@ -43,7 +67,7 @@ export default function GetQuote() {
         }
 
         // Email validation
-        if (getquot.email.trim() === "") {
+        if (!getquot.email ||getquot.email.trim() === "") {
             errors.email = "Enter your email";
             isvalid = false;
         } else if (!emailreg.test(getquot.email.trim())) {
@@ -52,7 +76,7 @@ export default function GetQuote() {
         }
 
         // Mobile number validation
-        if (getquot.mobilenumber.trim() === "") {
+        if (!getquot.mobilenumber ||getquot.mobilenumber.trim() === "") {
             errors.mobilenumber = "Mobile number is required";
             isvalid = false;
         } else if (!mobile.test(getquot.mobilenumber.trim())) {
@@ -72,25 +96,25 @@ export default function GetQuote() {
         })
 
         // Submit with EmailJS
-        emailjs
-            .sendForm('service_4zzsgj9', 'template_8lxlbyz', form.current, {
-                publicKey: 'X1TJH4REUonlxfxno',
-            })
-            .then(() => {
-                console.log('SUCCESS!');
-                alert("Quote sent successfully!");
+        // emailjs
+        //     .sendForm('service_4zzsgj9', 'template_8lxlbyz', form.current, {
+        //         publicKey: 'X1TJH4REUonlxfxno',
+        //     })
+        //     .then(() => {
+        //         console.log('SUCCESS!');
+        //         alert("Quote sent successfully!");
 
-                setGetQuot({
-                    name: "",
-                    email: "",
-                    mobilenumber: "",
-                    message: ""
-                });
-            })
-            .catch((error) => {
-                console.log('FAILED...', error.text);
-                alert("Something went wrong!");
-            });
+        //         setGetQuot({
+        //             name: "",
+        //             email: "",
+        //             mobilenumber: "",
+        //             message: ""
+        //         });
+        //     })
+        //     .catch((error) => {
+        //         console.log('FAILED...', error.text);
+        //         alert("Something went wrong!");
+        //     });
     }
 
     function handlechange(e) {
@@ -102,7 +126,13 @@ export default function GetQuote() {
             if (value.length > 10) return;
         }
 
-        if (name === 'image') return  
+        if (name === 'image') {
+            setGetQuot({
+                ...GetQuote,
+                [name]:files[0]
+            })
+            return
+        }
 
         setGetQuot({
             ...getquot,
