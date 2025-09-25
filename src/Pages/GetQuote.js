@@ -75,7 +75,8 @@ export default function GetQuote() {
             name: "",
             email: "", image: "",
             mobilenumber: "",
-            message: ""
+            message: "",
+            image:""
         })
 
         // Submit with EmailJS
@@ -109,7 +110,7 @@ export default function GetQuote() {
         formdata.append("image", getquot.image)
         formdata.append("message", getquot.message)
 
-
+    
         fetch(`${url}quote`, {
             method: "POST",
             credentials: 'include',
