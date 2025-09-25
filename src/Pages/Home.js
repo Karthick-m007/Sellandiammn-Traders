@@ -15,8 +15,62 @@ import Aboutus from './Aboutus'
 import GetQuote from './GetQuote'
 import Contact from './Contact'
 
+import image1 from '../images/electric wire.jpeg'
+import image2 from '../images/legrand-modular-switches-500x500.webp'
+import image3 from '../images/led ceiling lights OR energy efficient lighting.jpg'
+import image4 from '../images/ceiling fan interior OR industrial ventilation fan.webp'
+import image5 from '../images/electric breaker panel OR distribution board.jpeg'
+import image6 from '../images/electrical conduits and fittings installation.jpeg'
+import image7 from '../images/inverter battery backup system OR solar inverter setup.jpeg'
 
 
+const categories = [
+    {
+        icon: '🔌',
+        title: 'Electrical Wires',
+        description: 'Durable copper and aluminum wires for all electrical needs.',
+        image: image1,
+    },
+    {
+        icon: '🧲',
+        title: 'Switches & Sockets',
+        description: 'Stylish and safe switches, sockets, and modular systems.',
+        image: image2,
+    },
+    {
+        icon: '💡',
+        title: 'LED Lights & Fixtures',
+        description: 'Energy-saving bulbs, panels, and decorative lighting.',
+        image: image3,
+    },
+    {
+        icon: '🌬️',
+        title: 'Fans & Ventilation',
+        description: 'Ceiling fans, exhaust systems, and industrial coolers.',
+        image: image4,
+    },
+    {
+        icon: '⚡',
+        title: 'MCB & Distribution Boards',
+        description: 'Reliable breakers and DBs for electrical safety.',
+        image: image5,
+    },
+
+    {
+        icon: '🧰',
+        title: 'Conduits & Fittings',
+        description: 'PVC, GI, and flexible conduits for safe installations.',
+        image: image6,
+    },
+    {
+        icon: '🔋',
+        title: 'Inverters & Batteries',
+        description: 'Power backup solutions for home and office.',
+        image: image7,
+    },
+
+
+];
 
 export default function Home() {
     return (
@@ -144,63 +198,29 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className='py-10'>
-                <div>
-                    <h1 className='text-primary font-bold text-3xl text-center py-2 mt-3 mb-1'> Shop by Categories</h1>
-                    <p className='text-center pb-5 text-secondary'>Explore our wide range of quality electrical products.</p>
+            <section className='py-10 bg-background'>
+                <div className='text-center mb-8 px-4'>
+                    <h1 className='text-primary font-bold text-3xl'>Shop by Categories</h1>
+                    <p className='text-secondary mt-2'>Explore our wide range of quality electrical products.</p>
+                </div>
 
-
-                    <div className=' md:flex md:flex-wrap md:mx-16'>.
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-16'>
+                    {categories.map((cat, index) => (
                         <motion.div
+                            key={index}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 0.5, ease: 'easeOut' }}
-                            className="w-[80%] mx-auto md:w-[23%] border p-4 m-2"
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className="bg-white border border-gray-200 rounded-lg p-5 shadow hover:shadow-lg transition duration-300"
                         >
-                            {/* <div className='w-[80%]  mx-auto md:w-[23%] border p-4 m-2'> */}
-                            <div className='text-2xl my-2'>🔌</div>
-                            <h1 className='text-xl font-bold text-primary'>Electrical Wires</h1>
-                            <p className='text-secondary mt-2'>High-quality copper and aluminum wires for residential, commercial, and industrial use.</p>
-
-                            {/* </div> */}
-
+                            <img src={cat.image} alt={cat.title} className="w-full h-40 object-cover rounded-md mb-4" />
+                            <h2 className='text-xl font-semibold text-primary mb-2'>{cat.title}</h2>
+                            <p className='text-sm text-secondary'>{cat.description}</p>
                         </motion.div>
-
-                        <div className='w-[80%] mx-auto md:w-[23%] border p-4 m-2'>
-                            <div className='text-2xl my-2'>🔌</div>
-                            <h1 className='text-xl font-bold text-primary'>Electrical Wires</h1>
-                            <p className='text-secondary mt-2'>High-quality copper and aluminum wires for residential, commercial, and industrial use.</p>
-
-                        </div>
-                        <div className='w-[80%] mx-auto md:w-[23%] border p-4 m-2'>
-                            <div className='text-2xl my-2'>🔌</div>
-                            <h1 className='text-xl font-bold text-primary'>Electrical Wires</h1>
-                            <p className='text-secondary mt-2'>High-quality copper and aluminum wires for residential, commercial, and industrial use.</p>
-
-                        </div>
-                        <div className='w-[80%] mx-auto md:w-[23%] border p-4 m-2'>
-                            <div className='text-2xl my-2'>🔌</div>
-                            <h1 className='text-xl font-bold text-primary'>Electrical Wires</h1>
-                            <p className='text-secondary mt-2'>High-quality copper and aluminum wires for residential, commercial, and industrial use.</p>
-
-                        </div>
-                        <div className='w-[80%] mx-auto md:w-[23%] border p-4 m-2'>
-                            <div className='text-2xl my-2'>🔌</div>
-                            <h1 className='text-xl font-bold text-primary'>Electrical Wires</h1>
-                            <p className='text-secondary mt-2'>High-quality copper and aluminum wires for residential, commercial, and industrial use.</p>
-
-                        </div>
-                        <div className='w-[80%] mx-auto md:w-[23%] border p-4 m-2'>
-                            <div className='text-2xl my-2'>🔌</div>
-                            <h1 className='text-xl font-bold text-primary'>Electrical Wires</h1>
-                            <p className='text-secondary mt-2'>High-quality copper and aluminum wires for residential, commercial, and industrial use.</p>
-
-                        </div>
-                    </div>
+                    ))}
                 </div>
-            </section >
-
+            </section>
             <section className='w-[80%] flex flex-col mx-auto mt-3 p-3'>
                 <hr />
             </section>
@@ -245,14 +265,14 @@ export default function Home() {
             </section>
 
 
-            <section className='py-4 mt-20 scroll-m-20' id='aboutus'>
+            <section className='py-4 mt-16 scroll-m-20' id='aboutus'>
                 <Aboutus />
             </section>
             <section className='w-[80%] flex flex-col mx-auto mt-3 p-3'>
                 <hr />
             </section>
 
-            <section className='mt-20 scroll-m-20' id='contact'>
+            <section className='mt-16 scroll-m-20' id='contact'>
                 <Contact />
             </section>
 
