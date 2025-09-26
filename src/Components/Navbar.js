@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const dropdownRef = useRef();
-
+    const navigate = useNavigate()
     // Close dropdown when clicked outside
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -92,9 +93,9 @@ export default function Navbar() {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex md:items-center md:space-x-8">
-                        <a href="#" className="text-gray-700 hover:text-blue-600">
+                        <span onClick={() => navigate('/')} className="text-gray-700 hover:text-blue-600 cursor-pointer">
                             Home
-                        </a>
+                        </span>
 
                         {/* Dropdown */}
                         <div className="relative group" ref={dropdownRef}>
@@ -118,19 +119,17 @@ export default function Navbar() {
 
                             {dropdownOpen && (
                                 <div className="absolute z-50 mt-2 w-48 bg-white shadow-lg rounded-md">
-                                    <a
-                                        href="#"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    <span
+                                        onClick={() => navigate('/switches')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
                                     >
                                         Switches
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    </span>
+                                    <span
+                                        onClick={() => navigate('/pvcfittings')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
                                     >
                                         PVC Fittings
-                                    </a>
-                                    <a
+                                    </span>
+                                    {/* <a
                                         href="#"
                                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     >
@@ -147,7 +146,7 @@ export default function Navbar() {
                                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     >
                                         GI Fittings
-                                    </a>
+                                    </a> */}
                                 </div>
                             )}
                         </div>
@@ -167,9 +166,9 @@ export default function Navbar() {
                 {/* Mobile Menu Items */}
                 {menuOpen && (
                     <div className="md:hidden mt-2 space-y-2 pb-4">
-                        <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                        <span onClick={() => navigate('/')} className="block px-3 py-2 text-gray-700 hover:text-blue-600 cursor-pointer">
                             Home
-                        </a>
+                        </span>
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className="flex items-center w-full px-3 py-2 text-gray-700 hover:text-blue-600 focus:outline-none"
@@ -189,10 +188,11 @@ export default function Navbar() {
                         </button>
                         {dropdownOpen && (
                             <div className="pl-6 space-y-1">
-                                <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
+                                <span onClick={() => navigate('/switches')}
+                                    className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
                                     Switches
-                                </a>
-                                <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
+                                </span>
+                                {/* <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
                                     PVC Fittings
                                 </a>
                                 <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
@@ -203,7 +203,7 @@ export default function Navbar() {
                                 </a>
                                 <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
                                     GI Fittings
-                                </a>
+                                </a> */}
                             </div>
                         )}
                         <a href="#getquot" className="block px-3 py-2 text-gray-700 hover:text-blue-600">

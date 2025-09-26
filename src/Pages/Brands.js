@@ -9,23 +9,26 @@ import image5 from '../images/sturlite.jpeg'
 import image6 from '../images/rr cables.avif'
 import image7 from '../images/efab.jpeg'
 import image8 from '../images/million.png'
+import image9 from '../images/ashirwad.png'
+import image10 from '../images/lt.png'
 
 
 
 // You can replace these with actual brand images
-import legrandImg from "../images/legrand-modular-switches-500x500.webp";
+import legrandImg from "../images/legrand-switches.jpg";
 import cromptonImg from "../images/ceiling fan interior OR industrial ventilation fan.webp";
-import sturliteImg from "../images/led ceiling lights OR energy efficient lighting.jpg";
-import watertechImg from "../images/inverter battery backup system OR solar inverter setup.jpeg";
-import kjmImg from "../images/electric wire.jpeg";
+import sturliteImg from "../images/product-jpeg.jpg";
+import watertechImg from "../images/water-tec-water-tap.jpg";
+import kjmImg from "../images/wires-and-cables.png";
 
 const logos = [
     image1,
     image2,
     image3,
     image4,
+    image10,
     image5,
-    image6,image7,image8
+    image6,image7,image8,image9,
 ];
 
 const fadeLeft = {
