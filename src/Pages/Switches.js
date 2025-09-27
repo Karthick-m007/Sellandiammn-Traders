@@ -61,7 +61,7 @@ const products = [
 
 export default function SwitchesShowcase() {
     return (
-        <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24">
+        <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24 mt-24 scroll-m-24">
             <h2 className="text-3xl font-bold text-center text-primary mb-8">
                 Switches & Sockets
             </h2>

@@ -101,6 +101,7 @@ export default function Navbar() {
                     <div className="hidden md:flex md:items-center md:space-x-8">
                         <a
                             href="#home"
+                            onClick={()=>navigate('/')}
                             className="text-gray-700 hover:text-blue-600 cursor-pointer"
                         >
                             Home
