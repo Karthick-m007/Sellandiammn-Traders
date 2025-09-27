@@ -75,7 +75,7 @@ const categories = [
 export default function Home() {
     return (
         <div className='bg-background'>
-            <section className="  md:py-36  px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-center">
+            <section className=" py-20 md:py-36  px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-center">
                 {/* Text Content */}
 
 
