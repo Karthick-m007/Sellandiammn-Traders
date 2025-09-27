@@ -5,7 +5,8 @@ export default function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const dropdownRef = useRef();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     // Close dropdown when clicked outside
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -21,7 +22,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <div className="bg-white shadow fixed top-0 w-[100%] z-50">
+        <div className="bg-white shadow fixed top-0 w-full z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <nav className="flex items-center justify-between h-16">
                     {/* Logo */}
@@ -129,24 +130,6 @@ export default function Navbar() {
                                     >
                                         PVC Fittings
                                     </span>
-                                    {/* <a
-                                        href="#"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    >
-                                        UPVC Fittings
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    >
-                                        CPVC Fittings
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    >
-                                        GI Fittings
-                                    </a> */}
                                 </div>
                             )}
                         </div>
@@ -192,18 +175,6 @@ export default function Navbar() {
                                     className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
                                     Switches
                                 </span>
-                                {/* <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
-                                    PVC Fittings
-                                </a>
-                                <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
-                                    UPVC Fittings
-                                </a>
-                                <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
-                                    CPVC Fittings
-                                </a>
-                                <a href="#" className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
-                                    GI Fittings
-                                </a> */}
                             </div>
                         )}
                         <a href="#getquot" className="block px-3 py-2 text-gray-700 hover:text-blue-600">
