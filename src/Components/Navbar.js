@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -20,6 +20,11 @@ export default function Navbar() {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+    // Handle mobile link click
+    const handleMobileLinkClick = () => {
+        setMenuOpen(false); // Close the mobile menu when a link is clicked
+    };
 
     return (
         <div className="bg-white shadow fixed top-0 w-full z-50">
@@ -94,9 +99,12 @@ export default function Navbar() {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex md:items-center md:space-x-8">
-                        <span onClick={() => navigate('/')} className="text-gray-700 hover:text-blue-600 cursor-pointer">
+                        <a
+                            href="#home"
+                            className="text-gray-700 hover:text-blue-600 cursor-pointer"
+                        >
                             Home
-                        </span>
+                        </a>
 
                         {/* Dropdown */}
                         <div className="relative group" ref={dropdownRef}>
@@ -121,12 +129,20 @@ export default function Navbar() {
                             {dropdownOpen && (
                                 <div className="absolute z-50 mt-2 w-48 bg-white shadow-lg rounded-md">
                                     <span
-                                        onClick={() => navigate('/switches')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                                        onClick={() => {
+                                            navigate('/switches');
+                                            setMenuOpen(false); // Close the menu after navigating
+                                        }}
+                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
                                     >
                                         Switches
                                     </span>
                                     <span
-                                        onClick={() => navigate('/pvcfittings')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                                        onClick={() => {
+                                            navigate('/pvcfittings');
+                                            setMenuOpen(false); // Close the menu after navigating
+                                        }}
+                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
                                     >
                                         PVC Fittings
                                     </span>
@@ -134,13 +150,22 @@ export default function Navbar() {
                             )}
                         </div>
 
-                        <a href="#getquot" className="text-gray-700 hover:text-blue-600">
+                        <a
+                            href="#getquot"
+                            className="text-gray-700 hover:text-blue-600"
+                        >
                             Get Quote
                         </a>
-                        <a href="#aboutus" className="text-gray-700 hover:text-blue-600">
+                        <a
+                            href="#aboutus"
+                            className="text-gray-700 hover:text-blue-600"
+                        >
                             About Us
                         </a>
-                        <a href="#contact" className="text-gray-700 hover:text-blue-600">
+                        <a
+                            href="#contact"
+                            className="text-gray-700 hover:text-blue-600"
+                        >
                             Contact
                         </a>
                     </div>
@@ -149,9 +174,13 @@ export default function Navbar() {
                 {/* Mobile Menu Items */}
                 {menuOpen && (
                     <div className="md:hidden mt-2 space-y-2 pb-4">
-                        <span onClick={() => navigate('/')} className="block px-3 py-2 text-gray-700 hover:text-blue-600 cursor-pointer">
+                        <a
+                            href="#home"
+                            onClick={handleMobileLinkClick}
+                            className="block px-3 py-2 text-gray-700 hover:text-blue-600 cursor-pointer"
+                        >
                             Home
-                        </span>
+                        </a>
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className="flex items-center w-full px-3 py-2 text-gray-700 hover:text-blue-600 focus:outline-none"
@@ -171,19 +200,41 @@ export default function Navbar() {
                         </button>
                         {dropdownOpen && (
                             <div className="pl-6 space-y-1">
-                                <span onClick={() => navigate('/switches')}
-                                    className="block text-sm text-gray-700 hover:bg-gray-100 px-4 py-2">
+                                <Link
+                                    to="/switches"
+                                    onClick={handleMobileLinkClick} // Close menu after clicking
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                                >
                                     Switches
-                                </span>
+                                </Link>
+                                <Link
+                                    to="/pvcfittings"
+                                    onClick={handleMobileLinkClick} // Close menu after clicking
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                                >
+                                    PVC Fittings
+                                </Link>
                             </div>
                         )}
-                        <a href="#getquot" className="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                        <a
+                            href="#getquot"
+                            onClick={handleMobileLinkClick}
+                            className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+                        >
                             Get Quote
                         </a>
-                        <a href="#aboutus" className="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                        <a
+                            href="#aboutus"
+                            onClick={handleMobileLinkClick}
+                            className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+                        >
                             About Us
                         </a>
-                        <a href="#contactz" className="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                        <a
+                            href="#contact"
+                            onClick={handleMobileLinkClick}
+                            className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+                        >
                             Contact
                         </a>
                     </div>
